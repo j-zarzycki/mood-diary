@@ -2,8 +2,7 @@ const app = require('./app');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-
-mongoose.connect("mongodb://pai:pai123@localhost:27017/pai", {
+mongoose.connect("mongodb://pai:pai123@localhost:27017/paidb", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
