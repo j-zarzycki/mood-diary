@@ -1,0 +1,13 @@
+.valid {
+   display: none;
+}
+
+.invalid {
+    display:inline;
+    font-size: 0.7rem;
+    color: red;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin: 4px;
+    text-align: left;
+}

@@ -1,0 +1,16 @@
+.container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    min-width: 250px;
+    height: 45vh;
+    min-height: 230px;
+    padding: 20px;
+    background-color: #21213E;
+    border-radius: 10px;
+    /* -webkit-box-shadow: 11px 7px 12px 4px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 11px 7px 12px 4px rgba(66, 68, 90, 1);
+    box-shadow: 11px 7px 12px 4px rgba(66, 68, 90, 1); */
+}

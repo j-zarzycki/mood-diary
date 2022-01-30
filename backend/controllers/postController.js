@@ -12,9 +12,7 @@ exports.getAllPosts = async(req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        data: {
-            posts
-        }
+        posts
     })
 }
 
@@ -28,9 +26,7 @@ exports.getPost = async(req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        data: {
-            post
-        }
+        post
     })
 }
 
