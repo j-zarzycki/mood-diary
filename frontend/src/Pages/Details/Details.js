@@ -45,7 +45,7 @@ const Details = (props) => {
         headers: { "x-access-token": "" + token },
       })
       .then((data) => {
-        setPost({ title: data.title, description: data.description });
+        setPost(data.data.post);
       });
   };
 
