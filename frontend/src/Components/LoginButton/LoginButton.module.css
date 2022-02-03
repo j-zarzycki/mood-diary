@@ -9,8 +9,9 @@
     font-weight: 700;
     border-radius: 5px;
     border: 0;
-    text-align: left;
+    text-align: center;
     cursor: pointer;
+    float:right;
 }
 
 .buttonContext {

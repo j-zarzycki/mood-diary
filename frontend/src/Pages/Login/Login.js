@@ -1,52 +1,124 @@
-import axios from 'axios';
-import { useState } from 'react';
-
-import style from '../Login/Login.module.css';
-import InputField from '../../Components/InputField/InputField';
-import LoginWrapper from '../Login/LoginWrapper';
-import LoginButton from '../../Components/LoginButton/LoginButton';
-import Logo from '../../Components/Logo/Logo';
-import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
-
-const config = {
-  headers: {
-    'x-access-token':
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjFmNjg2MDViMWQwODhhODUwM2ZjMmUxIiwiZW1haWwiOiJicnVja2kxMjNAZ21haWwuY29tIiwiaWF0IjoxNjQzNTY0MTY0LCJleHAiOjE2NDM1NzEzNjR9.OUSeWor1OZv_X4PBQF-CB60WV1QvoGif816uR63Cjhk',
-  },
-};
+import axios from "axios";
+import { useState, useRef, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import style from "../Login/Login.module.css";
+import InputField from "../../Components/InputField/InputField";
+import LoginWrapper from "../Login/LoginWrapper";
+import LoginButton from "../../Components/LoginButton/LoginButton";
+import Logo from "../../Components/Logo/Logo";
+import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
+import AuthContext from "../../Context/auth-context";
 
 const Login = (props) => {
-  const [post, setPost] = useState();
-  const getPosts = () => {
-    
-    let resp = axios
-      .get('http://localhost:3000/api/v1/post', config)
-      .then(data => setPost(data));
-    
-      console.log(post);
-      console.log('----------------------------------------------------');
-      console.log(post.data.posts);
-    };
+  const [emailValidation, setEmailValidation] = useState(false);
+  const [passwordValidation, setPasswordValidation] = useState(false);
+  const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
+  const [token, setToken] = useState();
+  const emailInput = useRef();
+  const passwordInput = useRef();
+  const ctx = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const signIn = async () => {
+    try {
+      let response = await axios.post("http://localhost:8000/api/v1/login", {
+        email: "" + emailInput.current.value,
+        password: "" + passwordInput.current.value,
+      });
+      setToken(response.data.token);
+      if (token) {
+        localStorage.setItem("jwt", token);
+        ctx.onLogin();
+        navigate("/home");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const validateForm = (e) => {
+    let email = emailInput.current.value;
+    let password = passwordInput.current.value;
+
+    if (!email) {
+      setEmailValidation(false);
+      setErrorMessage((prevState) => {
+        return { ...prevState, email: "Email is empty" };
+      });
+    }
+
+    if (!password) {
+      setPasswordValidation(false);
+      setErrorMessage((prevState) => {
+        return { ...prevState, password: "Password is empty" };
+      });
+    }
+
+    if (password && password.length < 8) {
+      setPasswordValidation(false);
+      setErrorMessage((prevState) => {
+        return {
+          ...prevState,
+          password: "Password has to be min. 8 chars long",
+        };
+      });
+    }
+
+    if (email && !email.includes("@")) {
+      setEmailValidation(false);
+      setErrorMessage((prevState) => {
+        return { ...prevState, email: "Email has to contain @" };
+      });
+    }
+
+    if (email && email.includes("@")) {
+      setEmailValidation(true);
+    }
+
+    if (password && password.length >= 8) {
+      setPasswordValidation(true);
+    }
+
+    if (emailValidation && passwordValidation) {
+      console.log("SIGN IN");
+      console.log("EMAIL", email);
+      console.log("PASSWORD", password);
+      signIn();
+    }
+    e.preventDefault();
+  };
 
   return (
     <div className={style.wrapper}>
-      <Logo logo="Feelings Diary." />
-      <LoginWrapper>
-        <InputField
-          inputType="text"
-          inputName="login"
-          inputPlaceholder="Email"
-        />
-        <ErrorMessage isvalid={false} message="Please enter email" />
-        <InputField
-          inputType="password"
-          inputName="password"
-          inputPlaceholder="Password"
-        />
-        <ErrorMessage isvalid={true} message="Please enter password" />
-        <LoginButton buttonTitle="Sing In" onClick={getPosts} />
-        <button onClick={getPosts} />
-      </LoginWrapper>
+      
+      <form onSubmit={validateForm}>
+        <LoginWrapper>
+        <Logo logo="Feelings Diary." />
+          <InputField
+            inputType="text"
+            inputName="login"
+            inputPlaceholder="Email"
+            inputRef={emailInput}
+            value={emailInput}
+          />
+          <ErrorMessage
+            isValid={emailValidation}
+            message={errorMessage.email}
+          />
+          <InputField
+            inputType="password"
+            inputName="password"
+            inputPlaceholder="Password"
+            inputRef={passwordInput}
+            value={passwordInput}
+          />
+          <ErrorMessage
+            isValid={passwordValidation}
+            message={errorMessage.password}
+          />
+          <LoginButton buttonTitle="Sing In" />
+        </LoginWrapper>
+      </form>
     </div>
   );
 };

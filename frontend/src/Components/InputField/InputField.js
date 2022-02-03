@@ -6,7 +6,11 @@ const InputField = (props) => {
       className={style.inputField}
       type={props.inputType}
       value={props.inputValue}
+      name={props.inputName}
       placeholder={props.inputPlaceholder}
+      ref={props.inputRef}
+      onChange={props.onChangeEvent}
+      disabled = {props.isDisabled ? "disabled" : ""}
     />
   );
 };

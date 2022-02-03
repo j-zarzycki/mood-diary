@@ -1,9 +1,15 @@
-.container{
+
+
+.createContainer {
     height: 100vh;
     width: 100vw;
     background-color: #0F102B;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
+
+
+
+
+

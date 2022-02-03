@@ -1,0 +1,25 @@
+.header{
+    width: 100vw;
+    height: 15vh;
+    min-height: 50px;
+    background-color: #21213E;
+    display: inline-block;
+
+}
+
+.logoBox{
+    font-size: 3rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+}
+
+.headerButton {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: black;
+    height: 40px;
+    width: 8vw;
+    min-width: 90px;
+}

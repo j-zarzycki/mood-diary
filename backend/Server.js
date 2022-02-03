@@ -13,6 +13,6 @@ mongoose.connect("mongodb://pai:pai123@localhost:27017/paidb", {
     process.exit(1);
   });
   
-  const server = app.listen(3000, () => {
-    console.log(`App running on port ${3000}...`);
+  const server = app.listen(8000, () => {
+    console.log(`App running on port ${8000}...`);
   });
