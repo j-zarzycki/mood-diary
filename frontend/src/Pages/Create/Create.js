@@ -150,38 +150,45 @@ const Create = (props) => {
               inputPlaceholder="Enter title"
               inputRef={titleInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.title}
               message={errorMessage.title}
             />
+            <br />
             <InputField
               inputType="text"
               inputPlaceholder="Enter description"
               inputRef={descriptionInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.description}
               message={errorMessage.description}
             />
+            <br />
             <InputField
               inputType="text"
               inputPlaceholder="Enter mood"
               inputRef={moodInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.mood}
               message={errorMessage.mood}
             />
+            <br />
             <InputField
               inputType="date"
               inputPlaceholder="Enter post date"
               inputRef={postDateInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.postDate}
               message={errorMessage.postDate}
             />
-            <LoginButton />
+            <LoginButton buttonTitle="Send" />
           </form>
         </CreateWrapper>
       </div>

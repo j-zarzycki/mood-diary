@@ -12,6 +12,12 @@
     text-align: center;
     cursor: pointer;
     float:right;
+    margin-right: 0.9rem;
+}
+
+.loginButton:hover {
+    opacity: .8;
+    transition: all .3s;
 }
 
 .buttonContext {

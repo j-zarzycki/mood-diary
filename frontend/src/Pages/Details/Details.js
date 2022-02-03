@@ -109,28 +109,28 @@ const Details = (props) => {
             editHandler={isDisabledHandler}
             deleteHandler={deletePost}
           />
-          <InputField
+          <h7>Title</h7><InputField
             inputPlaceholder="Title"
             isDisabled={isDisabled}
             inputValue={post.title}
             inputName="title"
             onChangeEvent={stateHandler}
           />
-          <InputField
+          <h7>Day description</h7><InputField
             inputPlaceholder="Description"
             isDisabled={isDisabled}
             inputValue={post.description}
             inputName="description"
             onChangeEvent={stateHandler}
           />
-          <InputField
+          <h7>Mood</h7><InputField
             inputPlaceholder="Mood"
             isDisabled={isDisabled}
             inputValue={post.mood}
             inputName="mood"
             onChangeEvent={stateHandler}
           />
-          <InputField
+          <h7>Date</h7><InputField
             inputPlaceholder="Post date"
             inputType="date"
             isDisabled={isDisabled}

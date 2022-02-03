@@ -6,6 +6,7 @@ import InputField from "../../Components/InputField/InputField";
 import LoginWrapper from "../Login/LoginWrapper";
 import LoginButton from "../../Components/LoginButton/LoginButton";
 import Logo from "../../Components/Logo/Logo";
+import Image from "../../Components/Logo/Image";
 import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
 import AuthContext from "../../Context/auth-context";
 
@@ -93,7 +94,8 @@ const Login = (props) => {
       
       <form onSubmit={validateForm}>
         <LoginWrapper>
-        <Logo logo="Feelings Diary." />
+        <Logo logo="Feelings Diary" />
+        <Image />
           <InputField
             inputType="text"
             inputName="login"

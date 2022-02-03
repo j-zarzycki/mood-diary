@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import style from "./Register.module.css";
 import Logo from "../../Components/Logo/Logo";
+import Image from "../../Components/Logo/Image";
 import RegisterWrapper from "./RegisterWrapper";
 import InputField from "../../Components/InputField/InputField";
 import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
@@ -154,7 +155,8 @@ const Register = (props) => {
   return (
     <div className={style.container}>
       <RegisterWrapper>
-        <Logo logo="Feelings Diary." />
+        <Logo logo="Feelings Diary" />
+        <Image />
         <form onSubmit={registerHandler}>
           <InputField
             inputType="text"

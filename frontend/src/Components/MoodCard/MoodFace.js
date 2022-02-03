@@ -2,7 +2,7 @@ import style from './MoodFace.module.css';
 
 const MoodFace = (props) => {
     return (
-        <h1>Face</h1>
+        <h1><img src={require("../../Images/book.png")}></img></h1>
     )
 }
 

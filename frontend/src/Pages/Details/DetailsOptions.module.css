@@ -22,6 +22,7 @@
     margin: 4px 2px;
     cursor: pointer;
     height: 50px;
+    border-radius: 5px;
 }
 
 .editButton {
@@ -36,6 +37,7 @@
     margin: 4px 2px;
     cursor: pointer;
     height: 50px;
+    border-radius: 5px;
 }
 
 .deleteButton {
@@ -50,4 +52,10 @@
     margin: 4px 2px;
     cursor: pointer;
     height: 50px;
+    border-radius: 5px;
+}
+
+.backButton:hover, .editButton:hover, .deleteButton:hover {
+    opacity: .8;
+    transition: all .3s;
 }

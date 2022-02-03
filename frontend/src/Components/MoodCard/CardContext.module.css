@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    min-width: 15rem;
 }
 
 
@@ -9,5 +10,6 @@
     flex-direction: row;
     align-items: baseline;
     color: white;
+    justify-content: space-between;
 }
 

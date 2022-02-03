@@ -2,6 +2,7 @@ import style from "./Home.module.css";
 import MoodCard from "../../Components/MoodCard/MoodCard";
 import Header from "../../Components/Header/Header";
 import InputField from "../../Components/InputField/InputField";
+import Image from "../../Components/Logo/Image";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";

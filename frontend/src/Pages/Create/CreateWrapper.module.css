@@ -11,4 +11,7 @@
     border-radius: 10px;
     margin: 10px;
     margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    box-shadow: rgba(57, 57, 57, 0.8) 3px -2px 9px;
 }
