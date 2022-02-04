@@ -29,3 +29,42 @@ Tworząc wpis wypełniamy:<br/>
 Po dodaniu wpisu pojawi się na stronie głównej /home.<br/>
 
 Po naciśnięciu przycisku "sprawdź" następuje przekierowanie do szczegółów wpisu, gdzie istnieje możliwość edycji i usunięcia wybranego wpisu za pomocą przycisków "Edit" i "Delete".<br/>
+
+<h2>Uruchamianie</h2>
+
+1. Kopiujemy repozytorium
+
+```
+git clone https://github.com/j-zarzycki/pai-zaliczenie.git
+```
+
+2. W folderach "backend" oraz "frontend" instalujemy wszystkie wymagane moduły
+
+```
+npm install
+```
+
+3. Stwórz docker image
+
+```
+docker-compose build
+```
+
+4. Uruchom stworzony kontener
+
+```
+docker-compose up
+```
+
+5. Uruchom serwer w folderze backend
+
+```
+node server.js
+```
+
+6. Włącz aplikacje klienta w folderze frontend
+
+```
+npm start
+```
+  
