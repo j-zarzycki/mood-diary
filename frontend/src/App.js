@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Navigate to="/logowanie" />} />
           {ctx.isLoggedIn && <Route path="/home" element={<Home />} />}
           {ctx.isLoggedIn && (<Route path="/home/details/:id" element={<Details />} />)}
-          {ctx.isLoggedIn && (<Route path="/home/stworz/" element={<Create />} />)}
+          {ctx.isLoggedIn && (<Route path="/home/stworz" element={<Create />} />)}
           <Route path="logowanie" element={<Login />} />
           <Route path="rejestracja" element={<Register />} />
         </Routes>

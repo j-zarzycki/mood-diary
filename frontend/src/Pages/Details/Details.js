@@ -33,12 +33,6 @@ const Details = (props) => {
     return [year, month, day].join("-");
   };
 
-  const updateDate = () => {
-    newDate = post.postDate;
-    console.log(newDate.split("T"));
-    setDate(formatDate(newDate[0]));
-  };
-
   const getPost = () => {
     axios
       .get("http://localhost:8000/api/v1/post/" + params.id, {
@@ -134,7 +128,7 @@ const Details = (props) => {
             inputPlaceholder="Post date"
             inputType="date"
             isDisabled={isDisabled}
-            inputValue={date}
+            inputValue={post.postDate}
             inputName="postDate"
             onChangeEvent={stateHandler}
           />

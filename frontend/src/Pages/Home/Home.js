@@ -8,6 +8,7 @@ import ReactDOM from "react-dom";
 
 const Home = (props) => {
   const token = localStorage.getItem("jwt");
+  const email = localStorage.getItem("email")
   const [posts, setPosts] = useState([{}]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -17,7 +18,7 @@ const Home = (props) => {
 
   const getAllPosts = () => {
     axios
-      .get("http://localhost:8000/api/v1/post", {
+      .get("http://localhost:8000/api/v1/post/" + email, {
         headers: { "x-access-token": "" + token },
       })
       .then((data) => {

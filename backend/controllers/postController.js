@@ -4,7 +4,7 @@ const AppError = require('../utils/appError');
 
 
 exports.getAllPosts = async(req, res, next) => {
-    const posts = await Post.find();
+    const posts = await Post.find({createdBy: req.params.email});
 
     if(!posts) {
         return next(AppError("No posts found", 404));

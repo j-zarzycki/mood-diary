@@ -28,6 +28,7 @@ const Login = (props) => {
       setToken(response.data.token);
       if (token) {
         localStorage.setItem("jwt", token);
+        localStorage.setItem("email", emailInput.current.value);
         ctx.onLogin();
         navigate("/home");
       }
