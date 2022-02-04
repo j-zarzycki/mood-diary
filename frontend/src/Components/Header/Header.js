@@ -13,7 +13,8 @@ const Header = (props) => {
 
   return (
     <div className={style.header}>
-      <div className={style.logoBox}>Feelings Diary.</div>
+      <div className={style.logoBox}>Feelings Diary</div>
+      <div className={style.icon}><img src={require("../../Images/rainbow.png")}></img></div>
       <button className={style.headerButton} onClick={logOut}>
         Log Out
       </button>

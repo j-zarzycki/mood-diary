@@ -2,7 +2,8 @@ import style from "./CardContext.module.css";
 
 const CardContext = (props) => {
 
-    const correctDate = new Date(props.postDate)
+  const correctDate = new Date(props.postDate)
+
   return (
     <div className={style.container}>
       <div className={style.row}>

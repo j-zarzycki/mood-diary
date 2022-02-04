@@ -8,7 +8,7 @@ import axios from "axios";
 const MoodCard = (props) => {
   return (
     <CardWrapper>
-      <MoodFace />
+      <MoodFace mood={props.mood}/>
       <CardContext title={props.title} mood={props.mood} postDate={props.postDate}/>
       <CardOptions postId={props.postId} />
     </CardWrapper>

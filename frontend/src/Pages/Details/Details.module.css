@@ -1,10 +1,12 @@
 
 .detailsContainer {
-    height: 100vh;
-    width: 100vw;
     background-color: #0F102B;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("../../Images/dimitri-iakymuk-mCR10j_B6sM-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
 }
 

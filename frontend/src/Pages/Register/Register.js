@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import style from "./Register.module.css";
 import Logo from "../../Components/Logo/Logo";
+import Image from "../../Components/Logo/Image";
 import RegisterWrapper from "./RegisterWrapper";
 import InputField from "../../Components/InputField/InputField";
 import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
@@ -40,7 +41,7 @@ const Register = (props) => {
       password: password,
     });
 
-    navigate('/logowanie');
+    navigate("/logowanie");
   };
 
   const registerHandler = (e) => {
@@ -154,7 +155,8 @@ const Register = (props) => {
   return (
     <div className={style.container}>
       <RegisterWrapper>
-        <Logo logo="Feelings Diary." />
+        <Logo logo="Feelings Diary" />
+        <Image />
         <form onSubmit={registerHandler}>
           <InputField
             inputType="text"
@@ -192,7 +194,10 @@ const Register = (props) => {
             isValid={inputValidation.password}
             message={errorMessage.password}
           />
-          <LoginButton />
+          <div className={style.buttonArea}>
+            <LoginButton  buttonTitle="Go back" onClick={() => navigate('/logowanie')}/>
+            <LoginButton />
+          </div>
         </form>
       </RegisterWrapper>
     </div>

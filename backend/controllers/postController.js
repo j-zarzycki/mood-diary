@@ -19,7 +19,8 @@ exports.getAllPosts = async(req, res, next) => {
 
 exports.getPost = async(req, res, next) => {
     const post = await Post.findById(req.params.id);
-
+    console.log("PARAMS = ", req.params.id);
+    console.log("POST = ", post)
     if(!post) {
         return next(AppError("No post found", 404));
     }

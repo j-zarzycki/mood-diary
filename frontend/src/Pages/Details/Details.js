@@ -5,6 +5,7 @@ import InputField from "../../Components/InputField/InputField";
 import DetailsWrapper from "./DetailsWrapper";
 import DetailsOptions from "./DetailsOptions";
 import LoginButton from "../../Components/LoginButton/LoginButton";
+import SelectMood from '../../Components/SelectMood/SelectMood';
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -33,6 +34,12 @@ const Details = (props) => {
     return [year, month, day].join("-");
   };
 
+  const updateDate = () => {
+    newDate = post.postDate;
+    console.log(newDate.split("T"));
+    setDate(formatDate(newDate[0]));
+  };
+
   const getPost = () => {
     axios
       .get("http://localhost:8000/api/v1/post/" + params.id, {
@@ -51,7 +58,7 @@ const Details = (props) => {
         description: post.description,
         mood: post.mood,
         createdBy: post.createdBy,
-        postDate: new Date(date).toJSON(),
+        postDate: new Date("2022-02-04").toJSON(),
       },
       {
         headers: { "x-access-token": "" + token },
@@ -103,32 +110,31 @@ const Details = (props) => {
             editHandler={isDisabledHandler}
             deleteHandler={deletePost}
           />
-          <InputField
+          <h7>Title</h7><InputField
             inputPlaceholder="Title"
             isDisabled={isDisabled}
             inputValue={post.title}
             inputName="title"
             onChangeEvent={stateHandler}
           />
-          <InputField
+          <h7>Day description</h7><InputField
             inputPlaceholder="Description"
             isDisabled={isDisabled}
             inputValue={post.description}
             inputName="description"
             onChangeEvent={stateHandler}
           />
-          <InputField
-            inputPlaceholder="Mood"
-            isDisabled={isDisabled}
-            inputValue={post.mood}
-            inputName="mood"
-            onChangeEvent={stateHandler}
-          />
-          <InputField
+          <h7>Mood</h7><SelectMood 
+          selectValue="terrible" 
+          isDisabled={isDisabled}
+          selectValue={post.mood} 
+          selectName="mood"
+          onChangeEvent={stateHandler}/>
+          <h7>Date</h7><InputField
             inputPlaceholder="Post date"
             inputType="date"
             isDisabled={isDisabled}
-            inputValue={post.postDate}
+            inputValue="2022-02-04"
             inputName="postDate"
             onChangeEvent={stateHandler}
           />

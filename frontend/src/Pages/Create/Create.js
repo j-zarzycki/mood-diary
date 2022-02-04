@@ -1,13 +1,13 @@
-import style from './Create.module.css';
-import React, {useRef, useState} from "react";
-import {useNavigate} from 'react-router-dom'
+import style from "./Create.module.css";
+import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../../Components/Header/Header";
 import CreateWrapper from "./CreateWrapper";
 import InputField from "../../Components/InputField/InputField";
-import ErrorMessage from '../../Components/ErrorMessage/ErrorMessage';
-import LoginButton from '../../Components/LoginButton/LoginButton';
-
+import ErrorMessage from "../../Components/ErrorMessage/ErrorMessage";
+import LoginButton from "../../Components/LoginButton/LoginButton";
+import SelectMood from "../../Components/SelectMood/SelectMood";
 
 const Create = (props) => {
   const titleInput = useRef();
@@ -35,7 +35,8 @@ const Create = (props) => {
     let description = descriptionInput.current.value;
     let mood = moodInput.current.value;
     let postDate = postDateInput.current.value;
-    console.log("CREATE POST!")
+    let userEmail = localStorage.getItem("email");
+    console.log("CREATE POST!");
     const newDate = new Date(postDate);
     axios.post(
       "http://localhost:8000/api/v1/post",
@@ -43,7 +44,7 @@ const Create = (props) => {
         title: title,
         description: description,
         mood: mood,
-        createdBy: "brucki@gmail.com",
+        createdBy: userEmail,
         postDate: newDate.toJSON(),
       },
       { headers: { "x-access-token": "" + token } }
@@ -57,6 +58,7 @@ const Create = (props) => {
     let title = titleInput.current.value;
     let description = descriptionInput.current.value;
     let mood = moodInput.current.value;
+    console.log("MOOD = ", mood);
     let postDate = postDateInput.current.value;
 
     if (!title || title.length <= 5) {
@@ -95,23 +97,6 @@ const Create = (props) => {
       });
     }
 
-    if (!mood || mood.length <= 4) {
-      setErrorMessage((prevState) => {
-        return {
-          ...prevState,
-          mood: "Mood cannot be empty and and have to be at least 4 characters long",
-        };
-      });
-
-      setInputValidation((prevState) => {
-        return { ...prevState, mood: false };
-      });
-    } else {
-        setInputValidation((prevState) => {
-            return { ...prevState, mood: true };
-          });
-    }
-
     if (!postDate) {
       setErrorMessage((prevState) => {
         return {
@@ -132,7 +117,6 @@ const Create = (props) => {
     if (
       inputValidation.title &&
       inputValidation.description &&
-      inputValidation.mood &&
       inputValidation.postDate
     ) {
       createPost();
@@ -144,44 +128,49 @@ const Create = (props) => {
       <Header />
       <div className={style.createContainer}>
         <CreateWrapper>
+          <p className={style.titleMessage}>Create a new post!</p>
           <form onSubmit={createPostHandler}>
             <InputField
               inputType="text"
               inputPlaceholder="Enter title"
               inputRef={titleInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.title}
               message={errorMessage.title}
             />
+            <br />
             <InputField
               inputType="text"
               inputPlaceholder="Enter description"
               inputRef={descriptionInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.description}
               message={errorMessage.description}
             />
-            <InputField
-              inputType="text"
-              inputPlaceholder="Enter mood"
-              inputRef={moodInput}
-            />
-            <ErrorMessage
-              isValid={inputValidation.mood}
-              message={errorMessage.mood}
-            />
+            <br />
+            <SelectMood selectName="mood" selectRef={moodInput} />
+            <br />
             <InputField
               inputType="date"
               inputPlaceholder="Enter post date"
               inputRef={postDateInput}
             />
+            <br />
             <ErrorMessage
               isValid={inputValidation.postDate}
               message={errorMessage.postDate}
             />
-            <LoginButton />
+            <div className={style.buttonArea}>
+              <LoginButton
+                buttonTitle="Go back"
+                onClick={() => navigate("/home")}
+              />
+              <LoginButton buttonTitle="Send" />
+            </div>
           </form>
         </CreateWrapper>
       </div>

@@ -1,12 +1,26 @@
 
-
 .createContainer {
     height: 100vh;
-    width: 100vw;
     background-color: #0F102B;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: url("../../Images/dimitri-iakymuk-mCR10j_B6sM-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+
+.buttonArea{
+    display: flex;
+    justify-content: center
+}
+
+.titleMessage {
+    color:white;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
 }
 
 
